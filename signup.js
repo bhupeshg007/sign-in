@@ -6,6 +6,7 @@ import {
   TextInput,
   TouchableOpacity,
   Image,
+  KeyboardAvoidingView
 } from "react-native";
 // import Icon from 'react-native-vector-icons/dist/FontAwesome';
 
@@ -23,8 +24,8 @@ export default function SignUP() {
             paddingTop: 85,
           }}
         >
-          <Text style={{ fontSize: 22,color:'#f6f6f6' }}>S'enregistrer</Text>
-          <Text style={{ fontSize: 15,color:'#f6f6f6' }}>
+          <Text style={{ fontSize: 22, color: "#f6f6f6" }}>S'enregistrer</Text>
+          <Text style={{ fontSize: 15, color: "#f6f6f6" }}>
             Créer un compte pour partager vos talents ou en découvrir
           </Text>
         </View>
@@ -38,7 +39,7 @@ export default function SignUP() {
         >
           <Image
             style={styles.dottImage}
-            source={require("./assets/img2.png")}
+            source={require("./assets/dots.png")}
           />
           <View
             style={{
@@ -53,13 +54,19 @@ export default function SignUP() {
         </View>
       </View>
       <StatusBar style="auto" />
-      <View style={styles.inputField}>
+      <KeyboardAvoidingView style={styles.inputField}>
         <TextInput style={styles.textInput} placeholder="Adresse e-mail" />
         <TextInput style={styles.textInput} placeholder="Mot de passe*" />
         <TextInput style={styles.textInput} placeholder="Prénom" />
         <TextInput style={styles.textInput} placeholder="Nom defamille*" />
-        <TextInput style={styles.textInput} placeholder="Nom de votre compagnie" />
-        <TextInput style={styles.textInput} placeholder="Numéro de téléphone*" />
+        <TextInput
+          style={styles.textInput}
+          placeholder="Nom de votre compagnie"
+        />
+        <TextInput
+          style={styles.textInput}
+          placeholder="Numéro de téléphone*"
+        />
         <TextInput style={styles.textInput} placeholder="Adresse" />
         <View style={styles.checkBoxView}>
           <Text style={styles.checkBoxText}>
@@ -69,23 +76,27 @@ export default function SignUP() {
         <TouchableOpacity style={styles.btnRandomAsteroid}>
           <Text style={styles.btnTextRandomAsteroid}>S'enregistrer</Text>
         </TouchableOpacity>
-      </View>
+      </KeyboardAvoidingView>
       <View style={styles.bottomTextView}>
         <Text style={styles.bottomText}>Ou Connectez -vous en utilisant</Text>
       </View>
       <View style={styles.fbGoogleView}>
-        <TouchableOpacity>
-          <Image
-            style={styles.fbGoogleIcon}
-            source={require("./assets/img2.png")}
-          />
-        </TouchableOpacity>
-        <TouchableOpacity>
-          <Image
-            style={styles.fbGoogleIcon}
-            source={require("./assets/img2.png")}
-          />
-        </TouchableOpacity>
+        <View style={styles.icons}>
+          <TouchableOpacity>
+            <Image
+              style={styles.facebookIcon}
+              source={require("./assets/facebook.png")}
+            />
+          </TouchableOpacity>
+        </View>
+        <View style={styles.icons}>
+          <TouchableOpacity>
+            <Image
+              style={styles.GoogleIcon}
+              source={require("./assets/google.png")}
+            />
+          </TouchableOpacity>
+        </View>
       </View>
     </View>
   );
@@ -177,10 +188,35 @@ const styles = StyleSheet.create({
     shadowRadius: 2,
     elevation: 20,
   },
-  fbGoogleIcon: {
+  facebookIcon: {
+    height: 30,
+    width: 35,
+    borderRadius: 50,
+    shadowOffset: {
+      width: 2,
+      height: 2,
+    },
+    shadowOpacity: 1,
+    shadowRadius: 2,
+  },
+  GoogleIcon: {
+    height: 35,
+    width: 35,
+    borderRadius: 50,
+    shadowOffset: {
+      width: 2,
+      height: 2,
+    },
+    shadowOpacity: 1,
+    shadowRadius: 2,
+  },
+  icons: {
+    backgroundColor: "#ffffff",
     height: 45,
     width: 45,
     borderRadius: 50,
+    alignItems: "center",
+    justifyContent: "center",
     marginHorizontal: 10,
     shadowOffset: {
       width: 2,
@@ -188,5 +224,6 @@ const styles = StyleSheet.create({
     },
     shadowOpacity: 1,
     shadowRadius: 2,
+    elevation: 20,
   },
 });

@@ -7,11 +7,9 @@ import {
   TouchableOpacity,
   Image,
 } from "react-native";
-// import Icon from 'react-native-vector-icons/dist/FontAwesome';
+import * as React from 'react';
 
-// import iconFont from 'react-native-vector-icons/Fonts/FontAwesome.ttf';
-
-export default function SignIn() {
+export default function SignIn({ navigation }) {
   return (
     <View style={styles.container}>
       <View style={styles.Upper}>
@@ -24,7 +22,7 @@ export default function SignIn() {
         >
           <Image
             style={{ height: 80, width: 250 }}
-            source={require("./assets/Icon1.png")}
+            source={require("./assets/logo.png")}
           />
         </View>
         {/* upper lower half */}
@@ -38,13 +36,13 @@ export default function SignIn() {
           <View style={{}}>
             <Image
               style={styles.tinyLogo}
-              source={require("./assets/img2.png")}
+              source={require("./assets/dots.png")}
             />
           </View>
           <View style={{}}>
             <Image
               style={styles.tinyLogo}
-              source={require("./assets/img2.png")}
+              source={require("./assets/dots.png")}
             />
              <View
             style={{
@@ -75,7 +73,10 @@ export default function SignIn() {
           </Text>
         </View>
 
-        <TouchableOpacity style={styles.Seconnecterbtn}>
+        <TouchableOpacity style={styles.Seconnecterbtn}
+        onPress={() => {
+              navigation.navigate("logIn")
+            }}>
           <Text style={{ color: "white", fontSize: 20, paddingVertical: 10 }}>
             Se connecter
           </Text>
@@ -91,19 +92,23 @@ export default function SignIn() {
           </Text>
         </View>
         <View style={styles.fbGoogleView}>
+        <View style={styles.icons}>
           <TouchableOpacity>
             <Image
-              style={styles.fbGoogleIcon}
-              source={require("./assets/img2.png")}
-            />
-          </TouchableOpacity>
-          <TouchableOpacity>
-            <Image
-              style={styles.fbGoogleIcon}
-              source={require("./assets/img2.png")}
+              style={styles.facebookIcon}
+              source={require("./assets/facebook.png")}
             />
           </TouchableOpacity>
         </View>
+        <View style={styles.icons}>
+          <TouchableOpacity>
+            <Image
+              style={styles.GoogleIcon}
+              source={require("./assets/google.png")}
+            />
+          </TouchableOpacity>
+        </View>
+      </View>
       </View>
     </View>
   );
@@ -192,16 +197,42 @@ const styles = StyleSheet.create({
     width: "90.1%",
     backgroundColor: "#ffffff",
   },
-  fbGoogleIcon: {
-    height: 45,
-    width: 45,
+  facebookIcon: {
+    height: 30,
+    width: 35,
     borderRadius: 50,
-    marginHorizontal: 10,
     shadowOffset: {
       width: 2,
       height: 2,
     },
     shadowOpacity: 1,
     shadowRadius: 2,
+  },
+  GoogleIcon: {
+    height: 35,
+    width: 35,
+    borderRadius: 50,
+    shadowOffset: {
+      width: 2,
+      height: 2,
+    },
+    shadowOpacity: 1,
+    shadowRadius: 2,
+  },
+  icons: {
+    backgroundColor: "#ffffff",
+    height: 45,
+    width: 45,
+    borderRadius: 50,
+    alignItems: "center",
+    justifyContent: "center",
+    marginHorizontal: 10,
+    shadowOffset: {
+      width: 1,
+      height: 1,
+    },
+    shadowOpacity: 1,
+    shadowRadius: 2,
+    elevation: 10,
   },
 });

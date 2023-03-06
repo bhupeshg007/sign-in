@@ -6,6 +6,7 @@ import {
   TextInput,
   TouchableOpacity,
   Image,
+  KeyboardAvoidingView
 } from "react-native";
 // import Icon from 'react-native-vector-icons/dist/FontAwesome';
 
@@ -39,7 +40,7 @@ export default function LognIn() {
         >
           <Image
             style={styles.dottImage}
-            source={require("./assets/img2.png")}
+            source={require("./assets/dots.png")}
           />
           <View
             style={{
@@ -54,7 +55,7 @@ export default function LognIn() {
         </View>
       </View>
       <StatusBar style="auto" />
-      <View style={styles.inputField}>
+      <KeyboardAvoidingView style={styles.inputField}>
         <TextInput style={styles.textInput} placeholder="Adresse email" />
         <TextInput style={styles.textInput} placeholder="Code secret" />
         <TouchableOpacity
@@ -78,23 +79,27 @@ export default function LognIn() {
         <TouchableOpacity style={styles.identifierBtn}>
           <Text style={styles.identifierBtnText}>s'identifier</Text>
         </TouchableOpacity>
-      </View>
+      </KeyboardAvoidingView>
       <View style={styles.bottomTextView}>
         <Text style={styles.bottomText}>Ou Connectez -vous en utilisant</Text>
       </View>
       <View style={styles.fbGoogleView}>
-        <TouchableOpacity>
-          <Image
-            style={styles.fbGoogleIcon}
-            source={require("./assets/img2.png")}
-          />
-        </TouchableOpacity>
-        <TouchableOpacity>
-          <Image
-            style={styles.fbGoogleIcon}
-            source={require("./assets/img2.png")}
-          />
-        </TouchableOpacity>
+        <View style={styles.icons}>
+          <TouchableOpacity>
+            <Image
+              style={styles.facebookIcon}
+              source={require("./assets/facebook.png")}
+            />
+          </TouchableOpacity>
+        </View>
+        <View style={styles.icons}>
+          <TouchableOpacity>
+            <Image
+              style={styles.GoogleIcon}
+              source={require("./assets/google.png")}
+            />
+          </TouchableOpacity>
+        </View>
       </View>
     </View>
   );
@@ -174,23 +179,49 @@ const styles = StyleSheet.create({
     backgroundColor: "#ffffff",
     borderRadius: 10,
     shadowOffset: {
-      width: 2,
-      height: 2,
+      width: 1,
+      height: 1,
     },
     shadowOpacity: 1,
     shadowRadius: 2,
-    elevation: 20,
+    elevation: 10,
   },
-  fbGoogleIcon: {
-    height: 45,
-    width: 45,
+  facebookIcon: {
+    height: 30,
+    width: 35,
     borderRadius: 50,
-    marginHorizontal: 10,
     shadowOffset: {
       width: 2,
       height: 2,
     },
     shadowOpacity: 1,
     shadowRadius: 2,
+  },
+  GoogleIcon: {
+    height: 35,
+    width: 35,
+    borderRadius: 50,
+    shadowOffset: {
+      width: 2,
+      height: 2,
+    },
+    shadowOpacity: 1,
+    shadowRadius: 2,
+  },
+  icons: {
+    backgroundColor: "#ffffff",
+    height: 45,
+    width: 45,
+    borderRadius: 50,
+    alignItems: "center",
+    justifyContent: "center",
+    marginHorizontal: 10,
+    shadowOffset: {
+      width: 1,
+      height: 1,
+    },
+    shadowOpacity: 1,
+    shadowRadius: 2,
+    elevation: 10,
   },
 });
