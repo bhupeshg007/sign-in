@@ -6,7 +6,7 @@ import {
   TextInput,
   TouchableOpacity,
   Image,
-  KeyboardAvoidingView
+  KeyboardAvoidingView,
 } from "react-native";
 // import Icon from 'react-native-vector-icons/dist/FontAwesome';
 
@@ -25,7 +25,7 @@ export default function LognIn() {
           }}
         >
           <Text style={{ fontSize: 23, color: "#f6f6f6" }}>s'identifier</Text>
-          <Text style={{ fontSize: 14, color: "#f6f6f6", lineHeight:20, }}>
+          <Text style={{ fontSize: 14, color: "#f6f6f6", lineHeight: 20 }}>
             Connectez-vous pour découvrir des choses incroyables á proximité
             autour de vous.
           </Text>
@@ -63,14 +63,13 @@ export default function LognIn() {
             margin: 10,
             // alignItems:'flex-end',
             // justifyContent:'flex-end'
-
           }}
         >
           <Text
             style={{
               fontSize: 14,
-              marginLeft:180,
-              color:'#37657d',
+              marginLeft: 180,
+              color: "#37657d",
             }}
           >
             Mot de passe oublié?
@@ -80,8 +79,13 @@ export default function LognIn() {
           <Text style={styles.identifierBtnText}>s'identifier</Text>
         </TouchableOpacity>
       </KeyboardAvoidingView>
-      <View style={styles.bottomTextView}>
-        <Text style={styles.bottomText}>Ou Connectez -vous en utilisant</Text>
+
+      <View style={styles.bottomTextContainer}>
+        <View style={styles.line}></View>
+        <View style={styles.bottomTextView}>
+          <Text style={styles.bottomText}>Ou Connectez -vous{'\n'}en utilisant</Text>
+        </View>
+        <View style={styles.line}></View>
       </View>
       <View style={styles.fbGoogleView}>
         <View style={styles.icons}>
@@ -163,12 +167,24 @@ const styles = StyleSheet.create({
     fontSize: 25,
     paddingVertical: 11,
   },
-  bottomTextView: {
-    marginTop: 10,
-    justifyContent: "center",
+  bottomTextContainer: {
+    flexDirection: "row",
     alignItems: "center",
+    marginVertical: 10,
+    padding:10
   },
-  bottomText: {},
+  line: {
+    height: 2,
+    width: 60,
+    backgroundColor: "#37657d",
+  },
+  bottomTextView: {
+    paddingHorizontal:10,
+  },
+  bottomText: {
+    textAlign: "center",
+    color:'#0da0dc'
+  },
   fbGoogleView: {
     flexDirection: "row",
     justifyContent: "center",

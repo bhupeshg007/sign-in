@@ -60,15 +60,15 @@ export default function SignIn({ navigation }) {
       </View>
       <StatusBar style="auto" />
 
-      {/* Middle View */}
+      {/* Middle View  start*/}
       <View style={styles.middleView}>
         <View style={{}}>
-          <Text style={{ fontSize: 25, marginVertical: 10,color: "#0da0dc", }}>
+          <Text style={{ fontSize: 25, marginVertical: 10,color: "#0da0dc", fontWeight:'500'}}>
             Bienvenue sur Sen Jambaar!
           </Text>
         </View>
         <View style={{ marginHorizontal: 60 }}>
-          <Text style={{ fontSize: 15, textAlign: "center",color: "#0da0dc", }}>
+          <Text style={{ fontSize: 15, textAlign: "center",color: "#0da0dc",fontWeight:'500' }}>
             sen Jambaar, I'amour du tarvail bien accompli!{" "}
           </Text>
         </View>
@@ -81,16 +81,26 @@ export default function SignIn({ navigation }) {
             Se connecter
           </Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.nouveauBtn}>
+        <TouchableOpacity style={styles.nouveauBtn}
+        onPress={() => {
+              navigation.navigate("signUp")
+            }}>
           <Text style={{ color: "#f0930c", fontSize: 20, paddingVertical: 10 }}>
             Creer nouveau compte
           </Text>
         </TouchableOpacity>
-        <View style={styles.bottomTextView}>
+        {/* <View style={styles.bottomTextView}>
           <Text style={styles.bottomText}>
             Utiliser votre compte des ces reseaux sociaux
           </Text>
+        </View> */}
+        <View style={styles.bottomTextContainer}>
+        <View style={styles.line}></View>
+        <View style={styles.bottomTextView}>
+          <Text style={styles.bottomText}>Utiliser votre compte des {'\n'}ces reseaux sociaux</Text>
         </View>
+        <View style={styles.line}></View>
+      </View>
         <View style={styles.fbGoogleView}>
         <View style={styles.icons}>
           <TouchableOpacity>
@@ -109,6 +119,8 @@ export default function SignIn({ navigation }) {
           </TouchableOpacity>
         </View>
       </View>
+      {/* Middle View  end*/}
+
       </View>
     </View>
   );
@@ -177,16 +189,23 @@ const styles = StyleSheet.create({
     borderColor: "#f0930c",
   },
 
-  bottomTextView: {
-    marginHorizontal: 80,
-    marginVertical:10,
-    justifyContent: "center",
+  bottomTextContainer: {
+    flexDirection: "row",
     alignItems: "center",
+    marginVertical: 10,
+    padding:10
+  },
+  line: {
+    height: 2,
+    width: 60,
+    backgroundColor: "#0da0dc",
+  },
+  bottomTextView: {
+    paddingHorizontal:10,
   },
   bottomText: {
-    textAlign:'center',
-    color: "#0da0dc",
-
+    textAlign: "center",
+    color:'#0da0dc'
   },
   fbGoogleView: {
     flexDirection: "row",
