@@ -176,7 +176,7 @@ const styles = StyleSheet.create({
   line: {
     height: 2,
     width: 60,
-    backgroundColor: "#37657d",
+    backgroundColor: "#0da0dc",
   },
   bottomTextView: {
     paddingHorizontal:10,

@@ -151,7 +151,7 @@ const styles = StyleSheet.create({
     },
     shadowOpacity: 1,
     shadowRadius: 2,
-    elevation: 20,
+    elevation: 5,
   },
   textInput: {
     paddingVertical: 10,
@@ -193,7 +193,7 @@ const styles = StyleSheet.create({
   line: {
     height: 2,
     width: 60,
-    backgroundColor: "#37657d",
+    backgroundColor: "#0da0dc",
   },
   bottomTextView: {
     paddingHorizontal:10,
@@ -212,12 +212,12 @@ const styles = StyleSheet.create({
     backgroundColor: "#ffffff",
     borderRadius: 10,
     shadowOffset: {
-      width: 2,
-      height: 2,
+      width: 1,
+      height: 1,
     },
-    shadowOpacity: 1,
-    shadowRadius: 2,
-    elevation: 20,
+    shadowOpacity: 0.5,
+    shadowRadius: 0.5,
+    elevation: 5,
   },
   facebookIcon: {
     height: 30,
@@ -238,8 +238,9 @@ const styles = StyleSheet.create({
       width: 2,
       height: 2,
     },
-    shadowOpacity: 1,
-    shadowRadius: 2,
+    shadowOpacity: 0.5,
+    shadowRadius: 0.5,
+   
   },
   icons: {
     backgroundColor: "#ffffff",
@@ -253,8 +254,8 @@ const styles = StyleSheet.create({
       width: 2,
       height: 2,
     },
-    shadowOpacity: 1,
-    shadowRadius: 2,
-    elevation: 20,
+    shadowOpacity: 0.5,
+    shadowRadius: 0.5,
+    elevation: 5,
   },
 });
