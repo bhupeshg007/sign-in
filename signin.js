@@ -162,7 +162,7 @@ const styles = StyleSheet.create({
     },
     shadowOpacity: 1,
     shadowRadius: 2,
-    elevation: 20,
+    elevation: 5,
   },
   textInput: {
     paddingVertical: 10,
@@ -252,6 +252,6 @@ const styles = StyleSheet.create({
     },
     shadowOpacity: 1,
     shadowRadius: 2,
-    elevation: 10,
+    elevation: 5,
   },
 });
