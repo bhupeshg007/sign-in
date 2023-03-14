@@ -3,6 +3,7 @@
 import SignUP from './signup';
 import SignIn from './signin';
 import LogIn from './logIn';
+import NewPassword from './NewPassword';
 
 // export default function App() {
 //   return (
@@ -28,7 +29,7 @@ const Stack = createNativeStackNavigator();
 function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Home">
+      <Stack.Navigator initialRouteName="newPassword">
       <Stack.Screen name="Home" component={SignIn} 
           options={{ headerShown: false }}
          />
@@ -36,6 +37,9 @@ function App() {
           options={{ headerShown: false }}
          />
          <Stack.Screen name="signUp" component={SignUP} 
+          options={{ headerShown: false }}
+         />
+         <Stack.Screen name="newPassword" component={NewPassword} 
           options={{ headerShown: false }}
          />
       </Stack.Navigator>
