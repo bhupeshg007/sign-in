@@ -4,6 +4,7 @@ import SignUP from './signup';
 import SignIn from './signin';
 import LogIn from './logIn';
 import NewPassword from './NewPassword';
+import TermsScreen from './T&CScreen';
 
 // export default function App() {
 //   return (
@@ -29,7 +30,7 @@ const Stack = createNativeStackNavigator();
 function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="newPassword">
+      <Stack.Navigator initialRouteName="T&CScreen">
       <Stack.Screen name="Home" component={SignIn} 
           options={{ headerShown: false }}
          />
@@ -40,6 +41,9 @@ function App() {
           options={{ headerShown: false }}
          />
          <Stack.Screen name="newPassword" component={NewPassword} 
+          options={{ headerShown: false }}
+         />
+         <Stack.Screen name="T&CScreen" component={TermsScreen} 
           options={{ headerShown: false }}
          />
       </Stack.Navigator>
