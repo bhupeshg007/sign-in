@@ -1,4 +1,6 @@
 import { StatusBar } from "expo-status-bar";
+import React, { useState } from "react";
+import { BlurView } from '@react-native-community/blur';
 import {
   StyleSheet,
   Text,
@@ -6,106 +8,146 @@ import {
   TextInput,
   TouchableOpacity,
   Image,
+  Pressable,
   KeyboardAvoidingView,
+  Modal,
 } from "react-native";
 // import Icon from 'react-native-vector-icons/dist/FontAwesome';
 
 // import iconFont from 'react-native-vector-icons/Fonts/FontAwesome.ttf';
 
 export default function LognIn() {
+  const [modalVisible, setModalVisible] = useState(false);
+  const [normalOpacity, setBlur] = useState(1);
   return (
-    <View style={styles.container}>
-      <View style={styles.Upper}>
-        <View
-          style={{
-            alignSelf: "flex-start",
-            flex: 4,
-            paddingLeft: 10,
-            paddingTop: 110,
-          }}
-        >
-          <Text style={{ fontSize: 23, color: "#f6f6f6" }}>s'identifier</Text>
-          <Text style={{ fontSize: 14, color: "#f6f6f6", lineHeight: 20 }}>
-            Connectez-vous pour découvrir des choses incroyables á proximité
-            autour de vous.
-          </Text>
-        </View>
-        <View
-          style={{
-            flex: 1.5,
-            alignItems: "flex-end",
-            alignSelf: "flex-end",
-            marginBottom: -7,
-          }}
-        >
-          <Image
-            style={styles.dottImage}
-            source={require("./assets/dots.png")}
-          />
+    <>
+      <View style={[styles.container,{opacity:normalOpacity}]}>
+        <View style={styles.Upper}>
           <View
             style={{
-              backgroundColor: "#f0930c",
-              height: 60,
-              width: 60,
-              marginTop: -50,
-              marginRight: 3,
-              borderRadius: 50,
-            }}
-          ></View>
-        </View>
-      </View>
-      <StatusBar style="auto" />
-      <KeyboardAvoidingView style={styles.inputField}>
-        <TextInput style={styles.textInput} placeholder="Adresse email" />
-        <TextInput style={styles.textInput} placeholder="Code secret" />
-        <TouchableOpacity
-          style={{
-            margin: 10,
-            // alignItems:'flex-end',
-            // justifyContent:'flex-end'
-          }}
-        >
-          <Text
-            style={{
-              fontSize: 14,
-              marginLeft: 180,
-              color: "#37657d",
+              alignSelf: "flex-start",
+              flex: 4,
+              paddingLeft: 10,
+              paddingTop: 110,
             }}
           >
-            Mot de passe oublié?
-          </Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.identifierBtn}>
-          <Text style={styles.identifierBtnText}>s'identifier</Text>
-        </TouchableOpacity>
-      </KeyboardAvoidingView>
+            <Text style={{ fontSize: 23, color: "#f6f6f6" }}>s'identifier</Text>
+            <Text style={{ fontSize: 14, color: "#f6f6f6", lineHeight: 20 }}>
+              Connectez-vous pour découvrir des choses incroyables á proximité
+              autour de vous.
+            </Text>
+          </View>
+          <View
+            style={{
+              flex: 1.5,
+              alignItems: "flex-end",
+              alignSelf: "flex-end",
+              marginBottom: -7,
+            }}
+          >
+            <Image
+              style={styles.dottImage}
+              source={require("./assets/dots.png")}
+            />
+            <View
+              style={{
+                backgroundColor: "#f0930c",
+                height: 60,
+                width: 60,
+                marginTop: -50,
+                marginRight: 3,
+                borderRadius: 50,
+              }}
+            ></View>
+          </View>
+        </View>
+        <StatusBar style="auto" />
+        <KeyboardAvoidingView style={styles.inputField}>
+          <TextInput style={styles.textInput} placeholder="Adresse email" />
+          <TextInput style={styles.textInput} placeholder="Code secret" />
+          <TouchableOpacity
+            onPress={() => {setModalVisible(true),setBlur(.5)}}
+            style={{
+              margin: 10,
+              // alignItems:'flex-end',
+              // justifyContent:'flex-end'
+            }}
+          >
+            <Text
+              style={{
+                fontSize: 14,
+                marginLeft: 180,
+                color: "#37657d",
+              }}
+            >
+              Mot de passe oublié?
+            </Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.identifierBtn}>
+            <Text style={styles.identifierBtnText}>s'identifier</Text>
+          </TouchableOpacity>
+        </KeyboardAvoidingView>
 
-      <View style={styles.bottomTextContainer}>
-        <View style={styles.line}></View>
-        <View style={styles.bottomTextView}>
-          <Text style={styles.bottomText}>Ou Connectez -vous{'\n'}en utilisant</Text>
+        <View style={styles.bottomTextContainer}>
+          <View style={styles.line}></View>
+          <View style={styles.bottomTextView}>
+            <Text style={styles.bottomText}>
+              Ou Connectez -vous{"\n"}en utilisant
+            </Text>
+          </View>
+          <View style={styles.line}></View>
         </View>
-        <View style={styles.line}></View>
+        <View style={styles.fbGoogleView}>
+          <View style={styles.icons}>
+            <TouchableOpacity>
+              <Image
+                style={styles.facebookIcon}
+                source={require("./assets/facebook.png")}
+              />
+            </TouchableOpacity>
+          </View>
+          <View style={styles.icons}>
+            <TouchableOpacity>
+              <Image
+                style={styles.GoogleIcon}
+                source={require("./assets/google.png")}
+              />
+            </TouchableOpacity>
+          </View>
+        </View>
       </View>
-      <View style={styles.fbGoogleView}>
-        <View style={styles.icons}>
-          <TouchableOpacity>
-            <Image
-              style={styles.facebookIcon}
-              source={require("./assets/facebook.png")}
-            />
-          </TouchableOpacity>
+      <Modal animationType="slide" transparent={true} visible={modalVisible}>
+        <View style={styles.centeredView}>
+          <View style={styles.modalView}>
+            <View>
+              <Text style={styles.modalText1}>
+                Nous vous avons envoyé un SMS!
+              </Text>
+              <Text style={styles.modalText2}>
+                Votre lien de réinitialisation demotde passe a été envoyé á
+                *******889
+              </Text>
+              <View style={{flexDirection:'row'}}>
+              <Text style={styles.modalText3}>
+                Lien pas recu? ?</Text>
+                <TouchableOpacity>
+                  <Text style={styles.modalTouchText} >N'en veux pas</Text>
+                </TouchableOpacity>
+                </View>
+              <View style={styles.underLine}></View>
+
+            </View>
+
+            <Pressable
+              style={styles.button}
+              onPress={() => {setModalVisible(!modalVisible),setBlur(1)}}
+            >
+              <Text style={styles.textStyle}>X</Text>
+            </Pressable>
+          </View>
         </View>
-        <View style={styles.icons}>
-          <TouchableOpacity>
-            <Image
-              style={styles.GoogleIcon}
-              source={require("./assets/google.png")}
-            />
-          </TouchableOpacity>
-        </View>
-      </View>
-    </View>
+      </Modal>
+    </>
   );
 }
 
@@ -171,7 +213,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     marginVertical: 10,
-    padding:10
+    padding: 10,
   },
   line: {
     height: 2,
@@ -179,11 +221,11 @@ const styles = StyleSheet.create({
     backgroundColor: "#0da0dc",
   },
   bottomTextView: {
-    paddingHorizontal:10,
+    paddingHorizontal: 10,
   },
   bottomText: {
     textAlign: "center",
-    color:'#0da0dc'
+    color: "#0da0dc",
   },
   fbGoogleView: {
     flexDirection: "row",
@@ -239,5 +281,68 @@ const styles = StyleSheet.create({
     shadowOpacity: 1,
     shadowRadius: 2,
     elevation: 5,
+  },
+  centeredView: {
+    flex: 1,
+    justifyContent: "flex-end",
+    alignItems: "center",
+  },
+  modalView: {
+    height: 200,
+    width: 360,
+    backgroundColor: "#146194",
+    borderRadius: 20,
+    flexDirection: "row",
+    justifyContent: "space-between",
+    marginBottom: 20,
+    padding: 18,
+  },
+  textStyle: {
+    color: "white",
+    fontWeight: "bold",
+  },
+  modalText1: {
+    margin: 10,
+    color: "white",
+    fontSize:16,
+    fontWeight:"500"
+  },
+  modalText2: {
+    margin: 10,
+    color: "white",
+    fontSize:14,
+  },modalText3: {
+    margin: 10,
+    color: "white",
+    fontSize:13,
+  },
+  modalTouchText:{
+    color: "white",
+    fontSize:13,
+    marginTop:10,
+    marginLeft:-4
+  },
+  button: {
+    borderRadius: 8,
+    borderWidth: 2,
+    borderColor: "white",
+    height: 25,
+    width: 25,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  underLine: {
+    height: 1,
+    width: 82,
+    backgroundColor: "white",
+    marginLeft: 108,
+    marginTop: -11,
+  },
+  blurView: {
+    position: "absolute",
+    top: 0,
+    left: 0,
+    bottom: 0,
+    right: 0,
   },
 });
