@@ -69,8 +69,6 @@ export default function LognIn() {
             onPress={() => {setModalVisible(true),setBlur(.5)}}
             style={{
               margin: 10,
-              // alignItems:'flex-end',
-              // justifyContent:'flex-end'
             }}
           >
             <Text

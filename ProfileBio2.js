@@ -1,3 +1,4 @@
+import React, { useState, useEffect } from "react";
 import { StatusBar } from "expo-status-bar";
 import {
   StyleSheet,
@@ -8,15 +9,34 @@ import {
   Image,
   KeyboardAvoidingView,
   ScrollView,
-  navigation
+  navigation,
 } from "react-native";
+import * as ImagePicker from "expo-image-picker";
 import { Dimensions } from "react-native";
-// import Icon from 'react-native-vector-icons/dist/FontAwesome';
 
-// import iconFont from 'react-native-vector-icons/Fonts/FontAwesome.ttf';
 const windowWidth = Dimensions.get("window").width;
 const windowHeight = Dimensions.get("window").height;
-export default function ProfileBio2() {
+export default function ProfileBio2({ navigation }) {
+  const [image, setImage] = useState(null);
+
+  useEffect(() => {
+    if (!setImage == 0) {
+      navigation.navigate("ImagePickerScreen", { Im: image });
+    }
+  });
+
+  const pickImage = async () => {
+    let result = await ImagePicker.launchImageLibraryAsync({
+      mediaTypes: ImagePicker.MediaTypeOptions.All,
+      allowsEditing: true,
+      aspect: [1.5, 1],
+      quality: 1,
+    });
+    if (!result.canceled) {
+      setImage(result.assets[0].uri);
+    }
+  };
+
   return (
     <ScrollView
       contentContainerStyle={{
@@ -25,13 +45,15 @@ export default function ProfileBio2() {
     >
       <View style={styles.container}>
         <View style={styles.Upper}>
-        <TouchableOpacity
-        onPress={()=>navigation.goBack()}
-        >
-          <Image
-            style={styles.arrowIcon}
-            source={require("./assets/arrow.png")}
-          />
+          <TouchableOpacity
+            onPress={() => {
+              navigation.navigate("ProfileBio1");
+            }}
+          >
+            <Image
+              style={styles.arrowIcon}
+              source={require("./assets/arrow.png")}
+            />
           </TouchableOpacity>
           <View
             style={{
@@ -57,13 +79,36 @@ export default function ProfileBio2() {
           <TextInput style={styles.textInput} placeholder="Ville" />
 
           <TextInput style={styles.textInput} placeholder="Zone" />
-          <TextInput style={styles.textInput} placeholder="Catégoties" />
-          <TextInput
-            style={styles.textInput}
-            placeholder="Sub-catégoties"
-          />
-          
-          <TextInput style={styles.textInput} placeholder="Permis de conduire" />
+          {/* <TextInput style={styles.textInput} placeholder="Catégoties" /> */}
+          <View style={{ flexDirection: "row" }}>
+            <TextInput style={styles.textInput} placeholder="Catégoties" />
+            <TouchableOpacity onPress={() => {}} style={styles.plusIcon}>
+              <Text style={styles.plusText}>+</Text>
+            </TouchableOpacity>
+          </View>
+
+          {/* <TextInput style={styles.textInput} placeholder="Sub-catégoties" /> */}
+          <View style={{ flexDirection: "row" }}>
+            <TextInput style={styles.textInput} placeholder="Sub-catégoties" />
+            <TouchableOpacity onPress={() => {}} style={styles.plusIcon}>
+              <Text style={styles.plusText}>+</Text>
+            </TouchableOpacity>
+          </View>
+
+          <View style={{ flexDirection: "row" }}>
+            <TextInput
+              style={styles.textInput}
+              placeholder="Permis de conduire"
+            />
+            <TouchableOpacity
+              onPress={() => {
+                pickImage();
+              }}
+              style={styles.plusIcon}
+            >
+              <Text style={styles.plusText}>+</Text>
+            </TouchableOpacity>
+          </View>
           <TouchableOpacity style={styles.btnTouch}>
             <Text style={styles.btnText}>Obtenir mon consentement</Text>
           </TouchableOpacity>
@@ -93,7 +138,7 @@ const styles = StyleSheet.create({
   arrowIcon: {
     height: 30,
     width: 20,
-    transform: "rotate(180deg)",
+    transform: [{ rotate: "180deg" }],
   },
   inputField: {
     borderRadius: 10,
@@ -115,6 +160,24 @@ const styles = StyleSheet.create({
     width: 330,
     marginTop: 13,
   },
+  plusIcon: {
+    borderColor: "#146194",
+    borderWidth: 2,
+    height: 22,
+    width: 22,
+    borderRadius: 5,
+    alignItems: "center",
+    justifyContent: "center",
+    marginLeft: -40,
+    marginTop: 25,
+  },
+  plusText: {
+    marginTop: -3,
+    marginLeft: 1,
+    color: "#146194",
+    fontWeight: "500",
+    fontSize: 16,
+  },
   btnTouch: {
     backgroundColor: "#f0930c",
     width: 290,
@@ -122,10 +185,10 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     alignItems: "center",
   },
- btnText: {
+  btnText: {
     color: "white",
     fontSize: 17,
     paddingVertical: 12,
-    fontWeight:'500'
+    fontWeight: "500",
   },
 });

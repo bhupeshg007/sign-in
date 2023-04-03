@@ -75,7 +75,11 @@ export default function ProfileBio1({ navigation }) {
         </View>
 
         <View style={styles.profileImgView} >
-        <TouchableOpacity style={styles.touchProfileImg1}>
+        <TouchableOpacity style={styles.touchProfileImg1}
+         onPress={() => {
+              navigation.navigate("ProfileBio2")
+            }}
+        >
         <Image
               style={styles.profileImg1}
               source={require("./assets/profileImg1.png")}

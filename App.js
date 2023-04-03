@@ -1,5 +1,3 @@
-// import { StatusBar } from 'expo-status-bar';
-// import { StyleSheet, Text, View } from 'react-native';
 import SignUP from './signup';
 import SignIn from './signin';
 import LogIn from './logIn';
@@ -7,21 +5,11 @@ import NewPassword from './NewPassword';
 import TermsScreen from './T&CScreen';
 import ProfileBio1 from './ProfileBio1';
 import ProfileBio2 from './ProfileBio2';
+import ProfileBio2Blur from './ProfileBio2Blur';
+import ImagePickerScreen from './ImagePickerScreen';
 
-// export default function App() {
-//   return (
-//     <View >
-//     {/* <SignUP/> */}
-//     {/* <LogIn/> */}
-//     <SignIn/>
-//     </View>
-//   );
-// }
-
-// In App.js in a new project
 
 import * as React from 'react';
-// import { View, Text } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
@@ -32,7 +20,7 @@ const Stack = createNativeStackNavigator();
 function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="logIn">
+      <Stack.Navigator initialRouteName="ProfileBio2Blur">
       <Stack.Screen name="Home" component={SignIn} 
           options={{ headerShown: false }}
          />
@@ -52,6 +40,12 @@ function App() {
           options={{ headerShown: false }}
          />
           <Stack.Screen name="ProfileBio2" component={ProfileBio2} 
+          options={{ headerShown: false }}
+         />
+          <Stack.Screen name="ProfileBio2Blur" component={ProfileBio2Blur} 
+          options={{ headerShown: false }}
+         />
+         <Stack.Screen name="ImagePickerScreen" component={ImagePickerScreen} 
           options={{ headerShown: false }}
          />
       </Stack.Navigator>
