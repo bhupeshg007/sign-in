@@ -309,7 +309,8 @@ const styles = StyleSheet.create({
     margin: 10,
     color: "white",
     fontSize:14,
-  },modalText3: {
+  },
+  modalText3: {
     margin: 10,
     color: "white",
     fontSize:13,
